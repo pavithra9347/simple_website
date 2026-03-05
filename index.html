@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Jenkins Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+        <h1>Welcome to My Jenkins CI/CD Website</h1>
+        <p>This website is built, tested, and deployed using Jenkins.</p>
+        <button onclick="showMessage()">Click Me</button>
+        <p id="message"></p>
+    </div>
+<script>
+        function showMessage() {
+            document.getElementById("message").innerHTML =
+            "Deployment Successful!";
+        }
+    </script>
+</body>
+</html>

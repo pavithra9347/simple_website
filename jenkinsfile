@@ -1,14 +1,19 @@
 pipeline {
-agent anystages {stage('Build’) {
+agent any
+stages {
+stage('Build’) {
 steps {
-echo 'Building Website...’}
-}stage('Test’) {
+echo 'Building Website...’
+}
+}
+stage('Test’) {
 steps {
 script {
 if (fileExists('index.html')) {
 echo 'Test Passed: index.html exists’
 } else {
-error 'Test Failed: index.html not found’}
+error 'Test Failed: index.html not found’
+}
 }
 }
 }
@@ -28,3 +33,4 @@ bat 'start cmd /c "cd C:\\deploy-folder && python -m http.server 8000“’
 }
 }
 Developer 
+

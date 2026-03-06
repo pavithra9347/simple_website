@@ -24,19 +24,15 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying Website...'
-                bat '''
-                if not exist C:\\deploy-folder (
-                    mkdir C:\\deploy-folder
-                )
-                xcopy /E /I /Y * C:\\deploy-folder
-                '''
+                powershell 'New-Item -ItemType Directory -Force -Path C:\\deploy-folder'
+                powershell 'Copy-Item -Recurse -Force * C:\\deploy-folder'
             }
         }
 
         stage('Start Server') {
             steps {
                 echo 'Starting HTTP Server...'
-                bat 'cd C:\\deploy-folder && python -m http.server 8000'
+                powershell 'Start-Process python -ArgumentList "-m http.server 8000" -WorkingDirectory "C:\\deploy-folder"'
             }
         }
 
